@@ -44,6 +44,5 @@
     phone_number : 유저 전화번호를 의미합니다
     Data type : String
   
-    profile_img_url : 유저 프로필 사진 URL을 의미합니다
-    Data type : String
+    profile_img
     multipart name : profile
