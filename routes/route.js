@@ -8,4 +8,9 @@ function route(app) {
         "use strict";
         res.render('index.html');
     });
+
+    app.get('/login',(req,res)=>{
+        "use strict";
+        res.render('login.html');
+    });
 }
