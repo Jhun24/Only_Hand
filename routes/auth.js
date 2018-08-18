@@ -55,6 +55,8 @@ function auth(app) {
         let profile_img_url = req.file.path;
         let token = random_string.generate();
 
+        Logger.info(req.file.path);
+
         console.log(profile_img_url);
         console.log(id);
         async.waterfall([

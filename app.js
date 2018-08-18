@@ -22,7 +22,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('./routes/auth')(app);
 require('./routes/data')(app);
 require('./routes/setting')(app);
-require('./routes/route')(app)
+require('./routes/route')(app);
+require('./routes/music')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
