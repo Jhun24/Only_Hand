@@ -19,4 +19,9 @@ function route(app) {
         "use strict";
         res.render('register.html');
     });
+
+    app.get('/bluetooth',(req,res)=>{
+        "use strict";
+        res.render('bluetooth.html');
+    });
 }

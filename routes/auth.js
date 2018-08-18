@@ -44,13 +44,13 @@ function auth(app) {
         });
     });
 
-    app.post('/auth/register/',upload.single('profile'),(req,res)=>{
+    app.post('/auth/register',upload.single('profile'),(req,res)=>{
         "use strict";
-        let id = req.query.id
-        let password = req.query.password;
-        let name = req.query.name;
-        let gender = req.query.gender;
-        let phone_number = req.query.phone_number;
+        let id = req.body.id;
+        let password = req.body.password;
+        let name = req.body.name;
+        let gender = req.body.gender;
+        let phone_number = req.body.phone_number;
 
         let profile_img_url = req.file.path;
         let token = random_string.generate();
