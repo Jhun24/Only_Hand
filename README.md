@@ -23,3 +23,7 @@
 [/data](./docs/data.md)
 
     전체적인 데이터를 받아오는 쿼리입니다 
+    
+[/hand](./docs/hand.md)
+
+    손 잡고있는지
