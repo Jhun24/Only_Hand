@@ -30,9 +30,8 @@ function data(app) {
 
     app.get('/data/user/:name',(req,res)=>{
         "use strict";
-        console.log(req.params);
         let name = decodeURI(req.params.name);
-
+        console.log(name);
         User.find({
             user_data:{
                 name:name
