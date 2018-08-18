@@ -26,12 +26,12 @@ function data(app) {
                 })
             }
         });
-    })
+    });
 
     app.get('/data/user/:name',(req,res)=>{
         "use strict";
         console.log(req.params);
-        let name = req.params.name;
+        let name = decodeURI(req.params.name);
 
         User.find({
             user_data:{
