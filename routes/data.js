@@ -33,9 +33,7 @@ function data(app) {
         let name = decodeURI(req.params.name);
         console.log(name);
         User.find({
-            user_data:{
-                name:name
-            }
+            'user_data.name':name
         },(err,model)=>{
             if(err) throw err;
             console.log(model);
