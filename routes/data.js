@@ -38,6 +38,7 @@ function data(app) {
             }
         },(err,model)=>{
             if(err) throw err;
+            console.log(model);
             if(model.length == 0){
                 res.send({
                     status:404,
