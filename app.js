@@ -23,7 +23,6 @@ require('./routes/auth')(app);
 require('./routes/data')(app);
 require('./routes/setting')(app);
 require('./routes/route')(app);
-require('./routes/bluetooth')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

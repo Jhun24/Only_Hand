@@ -7,6 +7,27 @@ module.exports = data;
 let { User } = require('../DB/schema');
 
 function data(app) {
+
+    app.get('/user/:token',(req,res)=>{
+        "use strict";
+        let token = req.params.token;
+
+        User.find({token:token},(err,model)=>{
+            if(err) throw err;
+            if(model.length == 0){
+                res.send({
+                    status:401,
+                    message:"Unauthorized Token"
+                });
+            }else{
+                res.send({
+                    status:200,
+                    data:model[0]
+                })
+            }
+        });
+    })
+
     app.get('/data/user/:name',(req,res)=>{
         "use strict";
         let name = req.params.name;
