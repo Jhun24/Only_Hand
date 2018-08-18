@@ -52,7 +52,7 @@ function auth(app) {
         let gender = req.body.gender;
         let phone_number = req.body.phone_number;
 
-        let profile_img_url = req.file.path;
+        let profile_img_url = req.file.path.replace('uploads/');
         let token = random_string.generate();
 
         Logger.info(req.file.path);
