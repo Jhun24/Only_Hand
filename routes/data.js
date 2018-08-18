@@ -76,9 +76,9 @@ function data(app) {
         });
     });
 
-    app.get('/data/couple/:token',(req,res)=>{
+    app.get('/data/couple',(req,res)=>{
         "use strict";
-        let token = req.params.token;
+        let token = req.query.token;
 
         Couple.find({male_token:token},(err,model)=>{
             if(err) throw err;
