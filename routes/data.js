@@ -4,7 +4,7 @@
 
 module.exports = data;
 
-let { User } = require('../DB/schema');
+let { User , Couple } = require('../DB/schema');
 
 function data(app) {
 
@@ -80,12 +80,23 @@ function data(app) {
         "use strict";
         let token = req.params.token;
 
-        User.find({token:token},(err,model)=>{
+        Couple.find({male_token:token},(err,model)=>{
             if(err) throw err;
             if(model.length == 0){
-                res.send({
-                    status:401,
-                    message:"Unauthorized Token"
+                Couple.find({female_token:token},(err,model)=>{
+                    if(err) throw err;
+                    if(model.length == 0){
+                        res.send({
+                            status:401,
+                            message:"Unauthorized Token"
+                        });
+                    }
+                    else{
+                        res.send({
+                            status:200,
+                            token:model[0].couple.couple_room_token
+                        });
+                    }
                 });
             }
             else{
