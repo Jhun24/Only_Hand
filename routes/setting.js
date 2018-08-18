@@ -51,7 +51,7 @@ function setting(app) {
                 });
             },
             function (user , cb) {
-                if(user.user_data.gender == '남자'){
+                if(user.user_data.gender == '남성'){
                     let saveCouple = new Couple({
                         couple_accept : false,
                         male_token : user_token,
@@ -68,7 +68,7 @@ function setting(app) {
                         cb(null , 200 , "Send Success");
                     });
                 }
-                else if(user.user_data.gender == '여자'){
+                else if(user.user_data.gender == '여성'){
                     let saveCouple = new Couple({
                         couple_accept : false,
                         male_token : partner_token,
