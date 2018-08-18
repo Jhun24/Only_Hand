@@ -6,9 +6,9 @@ module.exports = hand;
 let { Hand } = require('../DB/schema');
 
 function hand(app) {
-    app.get('/hand/:couple_room_token',(req,res)=>{
+    app.get('/hand',(req,res)=>{
         "use strict";
-        let couple_room_token = req.params.couple_room_token;
+        let couple_room_token = req.query.couple_room_token;
 
         Hand.find({couple_room_token:couple_room_token},(err,model)=>{
             if(err) throw err;
