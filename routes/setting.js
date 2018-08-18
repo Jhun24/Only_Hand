@@ -7,6 +7,8 @@ let async = require('async');
 let { User , Couple } = require('../DB/schema');
 let random_string = require('randomstring');
 
+let Logger = require('../func/logger').Logger;
+
 function setting(app) {
     app.post('/setting/partner',(req,res)=>{
         "use strict";
@@ -98,8 +100,7 @@ function setting(app) {
         "use strict";
         let couple_room_token = req.body.couple_room_token;
         let accept = req.body.accept;
-
-        if(accept){
+        if(accept == true){
             async.waterfall([
                 function (cb) {
                     Couple.find({couple_room_token:couple_room_token},(err,model)=>{
@@ -212,7 +213,7 @@ function setting(app) {
                             cb(true , 404 , "No Data");
                         }
                         else{
-                            cb(null , model);
+                            cb(null , model[0]);
                         }
                     });
                 }
@@ -226,12 +227,13 @@ function setting(app) {
                             cb(true , 404 , "No Data");
                         }
                         else{
-                            cb(null , model);
+                            cb(null , model[0]);
                         }
                     });
                 }
             },
             function (couple_room , cb) {
+                Logger.info(couple_room);
                 if(couple_room.male_token == user_token){
                     User.find({token:couple_room.female_token},(err,model)=>{
                         if(err) throw err;

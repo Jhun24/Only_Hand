@@ -3,9 +3,9 @@
  */
 
 let mongoose = require('mongoose');
-let Logger = require('../func/color').Logger;
+let Logger = require('../func/logger').Logger;
 
-mongoose.connect('mongodb://localhost:27017/ddaal') ;
+mongoose.connect('mongodb://localhost:27017/onlyhand') ;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
@@ -20,6 +20,7 @@ let User = new mongoose.Schema({
         name : String,
         gender : String,
         profile_img_url : String,
+        phone_number:String,
     },
     partner:Boolean,
     couple:{

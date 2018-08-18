@@ -9,6 +9,9 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.set('view engine', 'html')
+app.set('views', 'views')
+app.engine('html', require('ejs').renderFile);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -19,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 require('./routes/auth')(app);
 require('./routes/data')(app);
 require('./routes/setting')(app);
+require('./routes/route')(app)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
