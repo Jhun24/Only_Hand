@@ -57,9 +57,7 @@ function data(app) {
         let phone_number = req.params.phone_number;
 
         User.find({
-            user_data:{
-                phone_number:phone_number
-            }
+            'user_data.phone_number':phone_number
         },(err,model)=>{
             if(err) throw err;
             if(model.length == 0){
