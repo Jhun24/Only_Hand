@@ -193,7 +193,7 @@ function setting(app) {
     app.get('/setting/get/partner/:token',(req,res)=>{
         "use strict";
         let user_token = req.params.token;
-
+        console.log(user_token);
         async.waterfall([
             function (cb) {
                 User.find({token:user_token},(err,model)=>{
