@@ -25,7 +25,7 @@ function setting(app) {
                         cb(true , 401 , "Unauthorized Partner Token");
                     }
                     else{
-                        if(model[0].partner){
+                        if(model[0].partner == true){
                             cb(true , 200 , "당신은 세컨드 입니다");
                         }
                         else{
@@ -41,7 +41,7 @@ function setting(app) {
                         cb(true , 401 , "Unauthorized Token");
                     }
                     else{
-                        if(model[0].partner){
+                        if(model[0].partner == true){
                             cb(true , 200 , "바람피지마라");
                         }
                         else{
@@ -137,6 +137,7 @@ function setting(app) {
                 },
                 function (couple_room , male , female , cb) {
                     User.update({token:couple_room.male_token},{$set:{
+                        partner:true,
                         couple:{
                             couple_room_token:couple_room.couple_room_token,
                             couple_id : female.id ,
@@ -150,10 +151,13 @@ function setting(app) {
                 },
                 function (couple_room , male , female , cb) {
                     User.update({token:couple_room.female_token},{$set:{
-                        couple_room_token:couple_room.couple_room_token,
-                        couple_id : male.id ,
-                        couple_token : male.token,
-                        couple_name : male.user_data.name
+                        partner:true,
+                        couple:{
+                            couple_room_token:couple_room.couple_room_token,
+                            couple_id : male.id ,
+                            couple_token : male.token,
+                            couple_name : male.user_data.name
+                        }
                     }},(err,model)=>{
                         if(err) throw err;
                         cb(null , couple_room);
@@ -233,7 +237,6 @@ function setting(app) {
                 }
             },
             function (couple_room , cb) {
-                Logger.info(couple_room);
                 if(couple_room.male_token == user_token){
                     User.find({token:couple_room.female_token},(err,model)=>{
                         if(err) throw err;
