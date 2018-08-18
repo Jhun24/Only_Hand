@@ -44,8 +44,15 @@ let Couple = new mongoose.Schema({
     }
 });
 
+let Hand = new mongoose.Schema({
+    couple_room_token:String,
+    hand:Boolean
+});
+
 let userModel = mongoose.model('userModel',User);
 let coupleModel = mongoose.model('coupleModel',Couple);
+let handModel = mongoose.model('handModel',Hand);
 
 exports.User = userModel;
 exports.Couple = coupleModel;
+exports.Hand = handModel;
