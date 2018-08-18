@@ -209,7 +209,7 @@ function setting(app) {
             },
             function (user , cb) {
                 console.log(user);
-                if(user.user_data.gender == "남자"){
+                if(user.user_data.gender == "남성"){
                     Couple.find({
                         couple_accept:false,
                         male_token:user_token
@@ -223,7 +223,7 @@ function setting(app) {
                         }
                     });
                 }
-                else if(user.user_data.gender == '여자'){
+                else if(user.user_data.gender == '여성'){
                     Couple.find({
                         couple_accept:false,
                         female_token:user_token
