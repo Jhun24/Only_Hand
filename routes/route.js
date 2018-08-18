@@ -13,4 +13,10 @@ function route(app) {
         "use strict";
         res.render('login.html');
     });
+
+
+    app.get('/register',(req,res)=>{
+        "use strict";
+        res.render('register.html');
+    });
 }
