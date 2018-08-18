@@ -197,6 +197,7 @@ function setting(app) {
         async.waterfall([
             function (cb) {
                 User.find({token:user_token},(err,model)=>{
+                    console.log("1");
                     if(err) throw err;
                     if(model.length == 0){
                         cb(true , 401 , "Unauthorized Token");
@@ -207,6 +208,7 @@ function setting(app) {
                 });
             },
             function (user , cb) {
+                console.log(user);
                 if(user.user_data.gender == "남자"){
                     Couple.find({
                         couple_accept:false,
@@ -237,6 +239,7 @@ function setting(app) {
                 }
             },
             function (couple_room , cb) {
+                console.log(couple_room);
                 if(couple_room.male_token == user_token){
                     User.find({token:couple_room.female_token},(err,model)=>{
                         if(err) throw err;
